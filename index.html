@@ -34,6 +34,9 @@
 			<div class="stagecontent">
 				<button type="button" class="orangestyle" onclick="toggleColor()">toggle background</button>
 			</div>
+			<div class="stagecontent">
+				<button type="button" onclick="togglePanel()">options</button>
+			</div>
 
 
 			<div class="stagecontent">
@@ -44,6 +47,70 @@
 			</div>
 
     </form>
+    <aside id="panel" class="panel hidden">
+		<section>
+			<h3>Text</h3>
+			<label class="check"><input type="checkbox" id="opt-uppercase"> uppercase</label>
+			<label>letter colors
+				<select id="opt-letterMode">
+					<option value="random">random</option>
+					<option value="cycle">in order</option>
+					<option value="single">single color</option>
+				</select>
+			</label>
+			<label class="check"><input type="checkbox" id="opt-highlightCenter"> anchor letter in graphic color</label>
+			<label>text palette <select id="opt-textPalette"></select></label>
+			<div id="textColors" class="colorlist"></div>
+		</section>
+
+		<section>
+			<h3>Blob text</h3>
+			<label class="check"><input type="checkbox" id="opt-showBlobTexts"> show</label>
+			<div class="row"><input type="text" id="opt-blob00" autocomplete="off"><input type="text" id="opt-blob01" autocomplete="off"></div>
+			<div class="row"><input type="text" id="opt-blob10" autocomplete="off"><input type="text" id="opt-blob11" autocomplete="off"></div>
+			<label>size <input type="range" id="opt-blobTextSize" min="0.3" max="1" step="0.05"></label>
+		</section>
+
+		<section>
+			<h3>Graphic</h3>
+			<label>graphic palette <select id="opt-graphicPalette"></select></label>
+			<label>background <input type="color" id="opt-background"></label>
+			<label>accent <input type="color" id="opt-accent"></label>
+			<label>shape palette <select id="opt-shapePalette"></select></label>
+			<div id="graphicColors" class="colorlist"></div>
+			<label>shape coloring
+				<select id="opt-graphicMode">
+					<option value="mixed">mixed</option>
+					<option value="single">single color</option>
+				</select>
+			</label>
+			<div class="row">
+				<button type="button" onclick="newLayout()">new layout</button>
+				<button type="button" onclick="shuffleColors()">shuffle colors</button>
+			</div>
+		</section>
+
+		<section>
+			<h3>Position</h3>
+			<label>move
+				<select id="opt-transformTarget">
+					<option value="graphic">graphic</option>
+					<option value="text">text</option>
+				</select>
+			</label>
+			<label>x <span id="val-x"></span> <input type="range" id="opt-x" min="-2000" max="2000" step="1"></label>
+			<label>y <span id="val-y"></span> <input type="range" id="opt-y" min="-2000" max="2000" step="1"></label>
+			<label>scale <span id="val-scale"></span> <input type="range" id="opt-scale" min="0.2" max="3" step="0.01"></label>
+			<label>rotation <span id="val-rotation"></span> <input type="range" id="opt-rotation" min="-180" max="180" step="1"></label>
+			<div class="row"><button type="button" onclick="resetTransform()">reset</button></div>
+			<p class="hint">Tip: you can also drag the text or the graphic on the canvas.</p>
+		</section>
+
+		<section>
+			<h3>Export</h3>
+			<label class="check"><input type="checkbox" id="opt-exportBackground"> include background color</label>
+		</section>
+	</aside>
     <canvas id="paperCanvas" resize="true"></canvas>
   </body>
 </html>
